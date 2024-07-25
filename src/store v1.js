@@ -20,9 +20,9 @@ function accountReducer(state = initialStateAccount, action) {
       if (state.loan > 0) return state;
       return {
         ...state,
-        loan: action.payload.ammount,
+        loan: action.payload.amount,
         loanPurpose: action.payload.purpose,
-        balance: state.balance + action.payload.ammount,
+        balance: state.balance + action.payload.amount,
       };
     case "account/payLoan":
       return {
@@ -59,16 +59,16 @@ const rootReducer = combineReducers({
 });
 const store = createStore(rootReducer);
 
-function deposit(ammount) {
-  return { type: "account/deposit", payload: ammount };
+function deposit(amount) {
+  return { type: "account/deposit", payload: amount };
 }
-function withdraw(ammount) {
-  return { type: "account/withdraw", payload: ammount };
+function withdraw(amount) {
+  return { type: "account/withdraw", payload: amount };
 }
-function requestLoan(ammount, purpose) {
+function requestLoan(amount, purpose) {
   return {
     type: "account/requestLoan",
-    payload: { ammount, purpose },
+    payload: { amount, purpose },
   };
 }
 function payLoan() {
